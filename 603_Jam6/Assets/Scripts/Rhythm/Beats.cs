@@ -19,7 +19,7 @@ public class Beats : MonoBehaviour {
 	[SerializeField]private Animator anim;
 	[SerializeField]private GameObject ring;
 
-	private int counter; // temp use
+	public int counter; // temp use
 	void Start()
 	{
 		_instance = this;
@@ -67,7 +67,7 @@ public class Beats : MonoBehaviour {
 
 
 		anim.gameObject.GetComponent<SpriteRenderer>().color = hitColor;
-		Destroy(Instantiate(ring,transform.position,transform.rotation),0.5f);
+		Destroy(Instantiate(ring,transform.position,transform.rotation,transform),0.5f);
 	}
 
 }

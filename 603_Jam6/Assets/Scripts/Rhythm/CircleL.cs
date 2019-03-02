@@ -37,7 +37,8 @@ public class CircleL : MonoBehaviour {
 			stimulated = true;
 			m_sprite.color = new Color(m_sprite.color.r,m_sprite.color.g,m_sprite.color.b,0);
 			Beats._instance.hit = true;
-			Beats._instance.hitColor = new Color(m_sprite.color.r,m_sprite.color.g,m_sprite.color.b,0.7f);
+            Beats._instance.clickTolerance = 1;
+            Beats._instance.hitColor = new Color(m_sprite.color.r,m_sprite.color.g,m_sprite.color.b,0.7f);
 			Beats._instance.OnCircleTrigger();
 			StartCoroutine(hit_reset_delay());
 		}else if (relate_pos <= -9.84-6.8)

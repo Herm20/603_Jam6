@@ -156,7 +156,8 @@ public class RhythmManager : MonoBehaviour
 			circle.reset();
 		}
 		player.time = 0f;
-		player.Play();
+        player.Play();
+        Beats._instance.counter = 0;
 		Invoke(nameof(audioFinished),player.clip.length);
 	}
 
