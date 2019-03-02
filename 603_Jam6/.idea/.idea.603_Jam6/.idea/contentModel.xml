@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Gmyth\.Rider2018.2\config\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\Gmyth\.Rider2018.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Gmyth\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_603_Jam6.1512648513.00" t="ExcludeRecursive" />
+    <e p="E:\603_Jam6\603_Jam6" t="IncludeRecursive">
+      <e p="603_Jam6.sln" t="IncludeFlat" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="FolderHolder.cs" t="Include" />
+          <e p="Rhythm" t="Include">
+            <e p="Beats.cs" t="Include" />
+            <e p="CircleL.cs" t="Include" />
+            <e p="CircleR.cs" t="Include" />
+            <e p="RhythmManager.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+  </component>
+</project>
