@@ -66,19 +66,11 @@ public class PlayerCombat : MonoBehaviour
     }
     private void moveTo(int xDiff, int yDiff){
         Vector3Int cellPosition = grid.WorldToCell(transform.position);
-        print("current position in grid: " + cellPosition);
         cellPosition += new Vector3Int(xDiff, yDiff, 0);
         var newPos = grid.GetCellCenterWorld(cellPosition);
-        print("old pos: " + transform.position);
-        print("new pos: " + newPos);
         StartCoroutine(movement(newPos));
     }
-    private void OnDrawGizmos() {
-        Vector3Int cellPosition = grid.WorldToCell(transform.position);
-        var newPos = grid.GetCellCenterWorld(cellPosition);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(newPos, 0.2f);
-    }
+
 
     IEnumerator movement(Vector3 target) {
         freeze = true;
