@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
         towers = new List<GameObject>();
-        gold = 0;// test
+        gold = 20;// test
         goldText.text = " " + gold;
         currentTower = TowerType.IceTower;
         generator = GetComponent<EnemySpawner>();
@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
         }
         gold -= costEachTower;
         goldText.text = " " + gold;
+        print(currentTower);
         switch (currentTower)
         {
                 case TowerType.IceTower:
@@ -171,7 +172,7 @@ public class GameManager : MonoBehaviour
                 currentTower = (TowerType) ((int) currentTower - 1);
             }
         }
-
+        
         Image.sprite = Images[(int) currentTower];
     }
 }

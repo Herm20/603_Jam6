@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]private GameObject modelHandler;
     private int frozenEndsAt;
 
-    private int hp = 10;
+    private int hp = 6;
     
     
     void Start()
@@ -141,13 +141,26 @@ public class Enemy : MonoBehaviour
 
     public void damage(int damageCounter){
         hp -= damageCounter;
-
+        StartCoroutine(Hurt(modelHandler.gameObject.GetComponent<SpriteRenderer>()));
         if (hp <= 0) die();
     }
 
     private void die(){
+        GameManager._instance.addGold(1);
         Destroy(gameObject);
     }
-
+    
+    IEnumerator Hurt(SpriteRenderer target)
+    {
+        // Let me do the stupid thing here
+        target.color = Color.grey;
+        yield return new WaitForSeconds(0.1f);
+        target.color = Color.white;
+        yield return new WaitForSeconds(0.1f);
+        target.color = Color.grey;
+        yield return new WaitForSeconds(0.1f);
+        target.color = Color.white;
+        //hell yeah Animation, lol
+    }
 
 }

@@ -64,19 +64,16 @@ public class bullet : MonoBehaviour
 
         if(e != null){
             if(gameObject.name == "BlueAttack(Clone)"){
-                GameManager._instance.addGold(10);
                 e.speedReduce(1);
                 e.damage(3);
             }
 
             if(gameObject.name == "GreenAttack(Clone)"){
-                GameManager._instance.addGold(10);
                 e.damage(3);
             }
 
             if(gameObject.name == "OrangeAttack(Clone)"){
-                GameManager._instance.addGold(10);
-                e.damage(5);
+                e.damage(6);
             }
         }
 	}
