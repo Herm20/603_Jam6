@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private WayPoints wayPoints;
     private int waypointIndex = 0;
     private Grid grid;
+    public int secondsPerMove;
     [SerializeField] private Animator anim;
     [SerializeField]private GameObject modelHandler;
     void Start()
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (!freeze&&Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+        if (!freeze&& Beats._instance.counter%secondsPerMove == 0 && lastMatchedBeat != Beats._instance.counter)
         {
             if (isArrived(wayPoints.wayPoints[waypointIndex].position))
             {
@@ -39,6 +40,9 @@ public class Enemy : MonoBehaviour
             }
             MoveTowardsTarget(wayPoints.wayPoints[waypointIndex].position);
             lastMatchedBeat = Beats._instance.counter;
+        }else if ( !freeze&& Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+        {
+            anim.Play("bugJumpping", -1, 0);
         }
 
     }

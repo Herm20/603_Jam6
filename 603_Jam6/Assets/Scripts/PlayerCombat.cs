@@ -10,57 +10,80 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private Grid grid;
     [SerializeField] private GameObject modelHandler;
     private Animator anim;
+    private Selector selector;
     // Start is called before the first frame update
     void Start()
     {
         freeze = false;
         anim = modelHandler.GetComponent<Animator>();
+        selector = gameObject.GetComponentInChildren<Selector>();
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!freeze) {
-            if (Input.GetButtonDown("Attack") && Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter) {
-                // ok for attack
-                lastMatchedBeat = Beats._instance.counter;
+            if (Input.GetButtonDown("Build"))
+            {
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for build
+                    if (GameManager._instance.isAvaliable(selector.transform.position))
+                    {
+                        GameObject tower = (GameObject)Resources.Load("Prefabs/Towers/FireTower");
+                        var temp = Instantiate(tower, selector.transform.position, Quaternion.identity);
+                        GameManager._instance.addTower(temp);
+                    }
+                    lastMatchedBeat = Beats._instance.counter;
+                }
             }
+               
 
-            if (Input.GetButtonDown("Left") && Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+            if (Input.GetButtonDown("Left"))
             {
                 // ok for move Horizontal
-                lastMatchedBeat = Beats._instance.counter;
-                moveTo(-1, 0);
-                // Vector3 target = new Vector3(transform.position.x + -1 * 1.145f, transform.position.y, transform.position.z);
-                // StartCoroutine(movement(target));
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for attack
+                    lastMatchedBeat = Beats._instance.counter;
+                    moveTo(-1, 0);
+                }
             }
 
-            if (Input.GetButtonDown("Right") && Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+            if (Input.GetButtonDown("Right"))
             {
-                // ok for move Horizontal
-                lastMatchedBeat = Beats._instance.counter;
-                // Vector3 target = new Vector3(transform.position.x + 1 * 1.145f, transform.position.y, transform.position.z);
-                // StartCoroutine(movement(target));
-                moveTo(1, 0);
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for attack
+                    lastMatchedBeat = Beats._instance.counter;
+                    moveTo(1, 0);
+                }
             }
 
-            if (Input.GetButtonDown("Up") && Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+            if (Input.GetButtonDown("Up"))
             {
-                // ok for move Vertical
-                lastMatchedBeat = Beats._instance.counter;
-                // Vector3 target = new Vector3(transform.position.x, transform.position.y + 1 * 0.9f, transform.position.z);
-                // StartCoroutine(movement(target));
-                moveTo(0, 1);
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for attack
+                    lastMatchedBeat = Beats._instance.counter;
+                    moveTo(0, 1);
+                }
             }
-
-            if (Input.GetButtonDown("Down") && Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+            if (Input.GetButtonDown("Down"))
             {
-                // ok for move Vertical
-                lastMatchedBeat = Beats._instance.counter;
-                moveTo(0, -1);
-                // Vector3 target = new Vector3(transform.position.x, transform.position.y + -1 * 0.9f, transform.position.z);
-
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for attack
+                    lastMatchedBeat = Beats._instance.counter;
+                    moveTo(0, -1);
+                }
             }
+            
         }
 
     }
@@ -74,7 +97,6 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator movement(Vector3 target) {
         freeze = true;
-        anim.Play("Interacting", -1, 0);
         int counter = 0;
         while (counter < 5) {
             var x  = Mathf.SmoothDamp(transform.position.x,target.x,ref speed.x, 0.03f);
@@ -83,6 +105,7 @@ public class PlayerCombat : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             counter++;
         }
+        selector.boundTile();
         freeze = false;
         yield return null;
     }

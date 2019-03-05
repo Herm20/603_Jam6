@@ -18,11 +18,11 @@ public class CameraManager : MonoBehaviour {
 	private bool locked;
 	private float shakeAmount = 0;
 	
-	public static Camera _instance;
+	public static CameraManager _instance;
 	private float shake_magnitude;
 	void Start ()
 	{
-		_instance = Camera.main;
+		_instance = this;
 		shaking = false;
 		locked = false;
 	}
