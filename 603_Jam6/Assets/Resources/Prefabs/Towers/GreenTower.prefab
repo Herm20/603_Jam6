@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcd8e5e1191565944bc9019b92b03a93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  bulletPrefab: {fileID: 3466308763624500071, guid: ff597e08b888ccf4fa8fa159c120a7e8,
-    type: 3}
+  prefabPath: Prefabs/Attacks/BlueAttack
   firePoint: {fileID: 116591557}
+  beatInterval: 3

@@ -6,6 +6,8 @@ public class TowerAttack : MonoBehaviour {
 
     private GameObject bullet;
 
+    public string prefabPath = "Prefabs/Attacks/GreenAttack";
+
     public Transform firePoint;
 
     private bool isGenerated = false;
@@ -16,10 +18,10 @@ public class TowerAttack : MonoBehaviour {
 
 
     void Start(){
-        bullet = (GameObject)Resources.Load("Prefabs/Attacks/GreenAttack");
+        bullet = (GameObject)Resources.Load(prefabPath);
         Instantiate(bullet, firePoint.position, Quaternion.identity);
 
-        CurrentBeat = Beats._instance.counter;
+        CurrentBeat = 0;
         
     }
 

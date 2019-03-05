@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5110893759048955011}
   - component: {fileID: 1468707765880231159}
   - component: {fileID: 5258862999816409540}
+  - component: {fileID: 2229207712988363450}
   m_Layer: 0
   m_Name: OrangeAttack
   m_TagString: Untagged
@@ -106,3 +107,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.70968974, y: 0.67256546}
   m_EdgeRadius: 0
+--- !u!114 &2229207712988363450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510135412937826525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ff8ab7395f12a4ab24016aca0ebbe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
