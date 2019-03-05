@@ -109,9 +109,9 @@ public class RhythmManager : MonoBehaviour
 			foreach (beatBuffer circleBuffer in circles)
 			{
 				float time = float.Parse(circleBuffer.time);
-				Vector3 circlePosition1 = new Vector3(transform.position.x - time * speed,transform.localPosition.y,transform.localPosition.z);
+				Vector3 circlePosition1 = new Vector3(transform.position.x - time * speed,transform.position.y,transform.position.z);
 				GameObject temp = Instantiate(CircleL, circlePosition1, transform.rotation, moverL.transform);
-				Vector3 circlePosition2 = new Vector3(transform.position.x + time * speed,transform.localPosition.y,transform.localPosition.z);
+				Vector3 circlePosition2 = new Vector3(transform.position.x + time * speed,transform.position.y,transform.position.z);
 				GameObject temp1 = Instantiate(CircleR, circlePosition2, transform.rotation, moverR.transform);
 				int colorIndex = Random.Range(0, colors.Length);
 				temp.GetComponent<SpriteRenderer>().color = colors[colorIndex];

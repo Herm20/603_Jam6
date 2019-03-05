@@ -9,13 +9,17 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="Enemy.cs" t="Include" />
           <e p="FolderHolder.cs" t="Include" />
+          <e p="GridManager.cs" t="Include" />
+          <e p="PlayerCombat.cs" t="Include" />
           <e p="Rhythm" t="Include">
             <e p="Beats.cs" t="Include" />
             <e p="CircleL.cs" t="Include" />
             <e p="CircleR.cs" t="Include" />
             <e p="RhythmManager.cs" t="Include" />
           </e>
+          <e p="WayPoints.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
