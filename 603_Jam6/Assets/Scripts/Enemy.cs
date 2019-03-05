@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour {
 
     private int waypointIndex = 0;
 
+
     void Start() {
        wayPoints = GameObject.FindGameObjectWithTag("WayPoints").GetComponent<WayPoints>(); 
     }    
@@ -26,5 +27,12 @@ public class Enemy : MonoBehaviour {
             }
             else Destroy(gameObject);
         } 
+
+        
+    }
+
+
+    void OnMouseDown(){
+        Destroy(this.gameObject);
     }
 }

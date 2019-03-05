@@ -6,4 +6,6 @@ public class WayPoints : MonoBehaviour {
 
     public Transform[] waypoints;
 
+
+
 }
