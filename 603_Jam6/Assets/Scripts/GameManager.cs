@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum TowerType
 {
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     private EnemySpawner generator;
 
     public int levelFactor;
+
+    private int arrivedEnemy;
     // Start is called before the first frame update
     void Awake()
     {
@@ -37,6 +40,7 @@ public class GameManager : MonoBehaviour
         currentTower = TowerType.IceTower;
         generator = GetComponent<EnemySpawner>();
         levelFactor = 1;
+        arrivedEnemy = 20;
 
     }
 
@@ -86,6 +90,13 @@ public class GameManager : MonoBehaviour
         {
             generator.startNewWave(60);
             lastMatchedBeat = Beats._instance.counter;
+        }       
+        
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            print("here");
+            SceneManager.LoadScene(Application.loadedLevel);
         }
     }
 
@@ -116,7 +127,18 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    
+
+    public void addArrived()
+    {
+        arrivedEnemy -= 1;
+        if (arrivedEnemy < 0)
+        {
+            goldText.text = "game over";
+        }
+
+        Time.timeScale = 0;
+    }
+
     public void chargeTower(Vector3 pos)
     {
         Vector3Int cellPosition = grid.WorldToCell(pos);

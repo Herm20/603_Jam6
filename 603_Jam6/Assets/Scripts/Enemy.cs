@@ -3,7 +3,6 @@
 using System.Collections.Generic;
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 
 public class Enemy : MonoBehaviour
@@ -21,7 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]private GameObject modelHandler;
     private int frozenEndsAt;
 
-    private int hp = 6 * GameManager._instance.levelFactor;
+    private int hp;
     
     
     void Start()
@@ -30,6 +29,7 @@ public class Enemy : MonoBehaviour
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
         freeze = false;
         secondsPerMove = normalSpeedFactor;
+        hp = 6 * GameManager._instance.levelFactor;
     }
 
     
@@ -43,7 +43,11 @@ public class Enemy : MonoBehaviour
                 {
                     waypointIndex++;
                 }
-                else Destroy(gameObject);
+                else
+                {
+                    GameManager._instance.addArrived();
+                    Destroy(gameObject);
+                }
             }
             MoveTowardsTarget(wayPoints.wayPoints[waypointIndex].position);
             lastMatchedBeat = Beats._instance.counter;
@@ -55,11 +59,6 @@ public class Enemy : MonoBehaviour
             secondsPerMove = normalSpeedFactor;
             frozenEndsAt = -1;
             modelHandler.gameObject.GetComponent<SpriteRenderer>().color = Color.white;;
-        }
-        
-        if (Input.GetButtonDown("Restart"))
-        {
-            SceneManager.LoadScene(0);
         }
 
     }
