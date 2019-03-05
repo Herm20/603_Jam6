@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour {
+public class CameraManager : MonoBehaviour {
 
 	// Use this for initialization
 	public float smoothTimeY;
@@ -22,7 +22,7 @@ public class Camera : MonoBehaviour {
 	private float shake_magnitude;
 	void Start ()
 	{
-		_instance = this;
+		_instance = Camera.main;
 		shaking = false;
 		locked = false;
 	}
