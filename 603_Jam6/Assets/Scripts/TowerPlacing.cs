@@ -9,8 +9,16 @@ public class TowerPlacing : MonoBehaviour {
     
     // public Camera camera;
     //public GameObject camera;
+
+    private Grid grid;
+
+    void Start(){
+        grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
+    }
     void OnMouseDown(){
-        
+        Vector3Int currentPosition = grid.WorldToCell(transform.position);
+        // Vector3Int targetPosition = grid.WorldToCell(TargetPos);
+        Debug.Log(currentPosition);
         if (Input.GetMouseButtonDown(0)){ 
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -20,11 +28,11 @@ public class TowerPlacing : MonoBehaviour {
                 Vector3 towerPosition = new Vector3(0, 0, 0);
 
                 if (transform.localScale.x >= transform.localScale.y) {
-                    towerPosition.y = transform.position.y + 0.5f;
+                    towerPosition.y = transform.position.y + 0.4f;
                     towerPosition.x = worldPoint.x;
                 }
                 else{
-                    towerPosition.y = worldPoint.y;
+                    towerPosition.y = worldPoint.y + 0.3f;
                     towerPosition.x = transform.position.x;
                 }
                 
@@ -33,14 +41,6 @@ public class TowerPlacing : MonoBehaviour {
             }   
         }
 
-        Debug.Log(Input.mousePosition);
-
-        Debug.Log("I'm here");
-        Debug.Log(gameObject.name);
-        Tilemap tilemap = transform.GetComponent<Tilemap>();
-        Vector3Int cellPosition = tilemap.WorldToCell(transform.position);
-        //transform.position = tilemap.GetCellCenterWorld(cellPosition);
-        Debug.Log(cellPosition);
     }
 
 }
