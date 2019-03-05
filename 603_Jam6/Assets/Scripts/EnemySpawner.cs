@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float beatInterval = 3;
+    private float beatInterval = 8;
 
     private GameObject enemy;
 
@@ -12,7 +12,6 @@ public class EnemySpawner : MonoBehaviour
 
     private float currentBeat;
 
-    
     // Start is called before the first frame update
     void Start() {
         isGenerated = false; 
@@ -22,14 +21,12 @@ public class EnemySpawner : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-
         if (currentBeat != Beats._instance.counter) isGenerated = false;
         if (((Beats._instance.counter % beatInterval) == 0) & isGenerated == false){
-            Instantiate(enemy, enemy.transform.position, Quaternion.identity);
+            GameObject e = Instantiate(enemy, enemy.transform.position, Quaternion.identity);
             currentBeat = Beats._instance.counter;
             isGenerated = true;
         }
-
-        
     }
+
 }

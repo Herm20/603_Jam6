@@ -1,5 +1,4 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 
 using System.Collections.Generic;
 
@@ -21,6 +20,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Animator anim;
     [SerializeField]private GameObject modelHandler;
     private int frozenEndsAt;
+
+    private int hp = 10;
     
     
     void Start()
@@ -137,6 +138,16 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
 
+
+    public void damage(int damageCounter){
+        hp -= damageCounter;
+
+        if (hp <= 0) die();
+    }
+
+    private void die(){
+        Destroy(gameObject);
+    }
 
 
 }
