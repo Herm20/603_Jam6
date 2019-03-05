@@ -293,8 +293,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: W,A,S,D to move - Left click to place towers - Right click to change your
-    tower type
+  m_Text: W,A,S,D to move - J to place towers - Q,E  to change your tower type, K
+    to destroy
 --- !u!222 &159247084
 CanvasRenderer:
   m_ObjectHideFlags: 0

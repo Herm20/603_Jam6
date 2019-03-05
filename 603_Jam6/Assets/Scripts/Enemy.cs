@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
     private int frozenEndsAt;
 
     private int hp;
+
+    private bool dead;
     
     
     void Start()
@@ -30,6 +32,7 @@ public class Enemy : MonoBehaviour
         freeze = false;
         secondsPerMove = normalSpeedFactor;
         hp = 6 * GameManager._instance.levelFactor;
+        dead = false;
     }
 
     
@@ -148,7 +151,11 @@ public class Enemy : MonoBehaviour
     public void damage(int damageCounter){
         hp -= damageCounter;
         StartCoroutine(Hurt(modelHandler.gameObject.GetComponent<SpriteRenderer>()));
-        if (hp <= 0) die();
+        if (hp <= 0 && !dead)
+        {
+            dead = true;
+            die();
+        }
     }
 
     private void die(){
