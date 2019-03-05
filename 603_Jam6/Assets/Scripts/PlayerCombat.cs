@@ -29,12 +29,34 @@ public class PlayerCombat : MonoBehaviour
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for build
-                    if (GameManager._instance.isAvaliable(selector.transform.position))
+                    if (GameManager._instance.isAvailable(selector.transform.position))
                     {
-                        GameObject tower = (GameObject)Resources.Load("Prefabs/Towers/FireTower");
-                        var temp = Instantiate(tower, selector.transform.position, Quaternion.identity);
-                        GameManager._instance.addTower(temp);
+                        GameManager._instance.addTower(selector.transform.position);
                     }
+                    lastMatchedBeat = Beats._instance.counter;
+                }
+            }
+            
+            if (Input.GetButtonDown("Fire2"))
+            {
+                // switch the tower
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for build
+                    GameManager._instance.switchTowerType(false);
+                    lastMatchedBeat = Beats._instance.counter;
+                }
+            }
+            
+            if (Input.GetButtonDown("Fire3"))
+            {
+                // switch the tower
+                anim.Play("Interacting", -1, 0);
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    // ok for build
+                    GameManager._instance.switchTowerType(true);
                     lastMatchedBeat = Beats._instance.counter;
                 }
             }

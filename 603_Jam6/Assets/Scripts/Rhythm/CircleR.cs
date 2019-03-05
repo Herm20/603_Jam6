@@ -31,7 +31,7 @@ public class CircleR : MonoBehaviour {
 			transform.position = new Vector3(transform.position.x - RhythmManager.Instance.speed* Time.deltaTime,transform.position.y,transform.position.z);
 		}
 		relate_pos = transform.parent.transform.parent.transform.localPosition.x + transform.parent.transform.localPosition.x - transform.localPosition.x;
-			if (relate_pos > -0.2f && !stimulated && relate_pos < 0)
+			if (relate_pos > -0.1f && !stimulated && relate_pos < 0.1f)
 			{
 				// beat hit
 				stimulated = true;

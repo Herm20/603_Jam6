@@ -15,14 +15,20 @@ public class Enemy : MonoBehaviour
     private WayPoints wayPoints;
     private int waypointIndex = 0;
     private Grid grid;
-    public int secondsPerMove;
+    private int secondsPerMove;
+    [SerializeField]private int forzenSpeedFactor;
+    [SerializeField]private int normalSpeedFactor;
     [SerializeField] private Animator anim;
     [SerializeField]private GameObject modelHandler;
+    private int frozenEndsAt;
+    
+    
     void Start()
     {
         wayPoints = GameObject.FindGameObjectWithTag("WayPoints").GetComponent<WayPoints>();
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
         freeze = false;
+        secondsPerMove = normalSpeedFactor;
     }
 
 
@@ -43,8 +49,18 @@ public class Enemy : MonoBehaviour
         }else if ( !freeze&& Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
         {
             anim.Play("bugJumpping", -1, 0);
+        }else if (Beats._instance.counter ==  frozenEndsAt)
+        {
+            secondsPerMove = normalSpeedFactor;
+            frozenEndsAt = -1;
         }
 
+    }
+
+    public void speedReduce(int howLong)
+    {
+        secondsPerMove = forzenSpeedFactor;
+        frozenEndsAt = Beats._instance.counter + howLong;
     }
 
     //helper 
