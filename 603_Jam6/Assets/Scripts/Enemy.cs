@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class Enemy : MonoBehaviour
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]private GameObject modelHandler;
     private int frozenEndsAt;
 
-    private int hp = 6;
+    private int hp = 6 * GameManager._instance.levelFactor;
     
     
     void Start()
@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         secondsPerMove = normalSpeedFactor;
     }
 
-
+    
     void Update()
     {
         if (!freeze&& Beats._instance.counter%secondsPerMove == 0 && lastMatchedBeat != Beats._instance.counter)
@@ -54,6 +54,12 @@ public class Enemy : MonoBehaviour
         {
             secondsPerMove = normalSpeedFactor;
             frozenEndsAt = -1;
+            modelHandler.gameObject.GetComponent<SpriteRenderer>().color = Color.white;;
+        }
+        
+        if (Input.GetButtonDown("Restart"))
+        {
+            SceneManager.LoadScene(0);
         }
 
     }
@@ -62,6 +68,7 @@ public class Enemy : MonoBehaviour
     {
         secondsPerMove = forzenSpeedFactor;
         frozenEndsAt = Beats._instance.counter + howLong;
+        modelHandler.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;;
     }
 
     //helper 
@@ -159,7 +166,16 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         target.color = Color.grey;
         yield return new WaitForSeconds(0.1f);
-        target.color = Color.white;
+        if (secondsPerMove == normalSpeedFactor)
+        {
+            target.color = Color.white;
+        }
+        else
+        {
+            target.color =Color.blue;
+        }
+
+
         //hell yeah Animation, lol
     }
 

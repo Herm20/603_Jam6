@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     private TowerType currentTower;
     private int lastMatchedBeat;
     private EnemySpawner generator;
+
+    public int levelFactor;
     // Start is called before the first frame update
     void Awake()
     {
@@ -34,7 +36,8 @@ public class GameManager : MonoBehaviour
         goldText.text = " " + gold;
         currentTower = TowerType.IceTower;
         generator = GetComponent<EnemySpawner>();
-        
+        levelFactor = 1;
+
     }
 
     private void Update()
@@ -55,6 +58,7 @@ public class GameManager : MonoBehaviour
         {
             generator.startNewWave(15);
             lastMatchedBeat = Beats._instance.counter;
+            levelFactor = 2;
         }else if(Beats._instance.counter == 120 && lastMatchedBeat != Beats._instance.counter)
         {
             generator.startNewWave(20);
@@ -62,6 +66,25 @@ public class GameManager : MonoBehaviour
         }else if(Beats._instance.counter == 150 && lastMatchedBeat != Beats._instance.counter)
         {
             generator.startNewWave(25);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if(Beats._instance.counter == 180 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(30);
+            lastMatchedBeat = Beats._instance.counter;
+            levelFactor = 3;
+        }
+        else if(Beats._instance.counter == 210 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(40);
+            lastMatchedBeat = Beats._instance.counter;
+        }
+        else if(Beats._instance.counter == 240 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(60);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if(Beats._instance.counter == 270 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(60);
             lastMatchedBeat = Beats._instance.counter;
         }
     }
