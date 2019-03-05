@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.R))
         {
-            print("here");
+            Time.timeScale = 1;
             SceneManager.LoadScene(Application.loadedLevel);
         }
     }
@@ -134,9 +134,8 @@ public class GameManager : MonoBehaviour
         if (arrivedEnemy < 0)
         {
             goldText.text = "game over";
-        }
-
-        Time.timeScale = 0;
+            Time.timeScale = 0;
+        }       
     }
 
     public void chargeTower(Vector3 pos)
