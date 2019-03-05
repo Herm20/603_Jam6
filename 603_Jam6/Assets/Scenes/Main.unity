@@ -1166,6 +1166,11 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 1434463912}
+    - target: {fileID: 2329059864704229112, guid: 0422dd3faae68a5408e5ffb3dc45b194,
+        type: 3}
+      propertyPath: clickToleranceInterval
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0422dd3faae68a5408e5ffb3dc45b194, type: 3}
 --- !u!1001 &4114581179247025863
