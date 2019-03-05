@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c77282bbd1e034b9a11f6af84d6c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costEachTower: 0
+  costEachTower: 10
   goldText: {fileID: 2107803681}
   Images:
   - {fileID: 21300000, guid: fa90813a95c76e44b8c10b101887ace7, type: 3}

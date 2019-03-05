@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public float beatInterval = 3;
+    public float beatInterval;
 
     private GameObject enemy;
 
-    private bool isGenerated;
-
     private float currentBeat;
 
-    
     // Start is called before the first frame update
     void Start() {
-        isGenerated = false; 
-        currentBeat = 0;
         enemy = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBug");
     }
 
-    // Update is called once per frame
-    void Update() {
+    public void startNewWave(int num)
+    {
+        StartCoroutine(spawn(num));
+    }
 
-        if (currentBeat != Beats._instance.counter) isGenerated = false;
-        if (((Beats._instance.counter % beatInterval) == 0) & isGenerated == false){
-            Instantiate(enemy, enemy.transform.position, Quaternion.identity);
-            currentBeat = Beats._instance.counter;
-            isGenerated = true;
+    IEnumerator spawn(int num)
+    {
+        int counter = 0;
+        int currentBeat = -1; 
+        while (counter < num)
+        {
+            if (Beats._instance.counter % beatInterval == 0 & Beats._instance.counter != currentBeat){
+                Instantiate(enemy, enemy.transform.position, Quaternion.identity);
+                currentBeat = Beats._instance.counter;
+                counter++;
+            }
+            yield return null;
         }
-
-        
+        yield return null;
     }
 }
