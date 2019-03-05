@@ -353,6 +353,7 @@ RectTransform:
   - {fileID: 1383235048}
   - {fileID: 1571619228}
   - {fileID: 1832231090}
+  - {fileID: 756249436}
   - {fileID: 1572541847}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -543,6 +544,101 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633929500}
+  m_CullTransparentMesh: 0
+--- !u!1 &756249435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 756249436}
+  - component: {fileID: 756249439}
+  - component: {fileID: 756249438}
+  - component: {fileID: 756249437}
+  m_Layer: 5
+  m_Name: Text (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &756249436
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756249435}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2191001, y: 0.29213348, z: 0.29213348}
+  m_Children: []
+  m_Father: {fileID: 506408831}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 881, y: -449}
+  m_SizeDelta: {x: 1873.7, y: 147.9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &756249437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756249435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 0.5}
+  m_EffectDistance: {x: 3, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &756249438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756249435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 130
+    m_FontStyle: 2
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 140
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Cook (Lostgarden.com) '
+--- !u!222 &756249439
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 756249435}
   m_CullTransparentMesh: 0
 --- !u!1 &1061548261
 GameObject:
@@ -1111,7 +1207,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 576, y: -420}
+  m_AnchoredPosition: {x: 460, y: -408}
   m_SizeDelta: {x: 1873.7, y: 147.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1571619229
@@ -1202,11 +1298,11 @@ RectTransform:
   m_LocalScale: {x: 0.23841321, y: 0.23841321, z: 0.23841321}
   m_Children: []
   m_Father: {fileID: 506408831}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 742.00006, y: -510}
+  m_AnchoredPosition: {x: 509.99994, y: -509}
   m_SizeDelta: {x: 1873.7, y: 147.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572541848
@@ -1389,14 +1485,14 @@ RectTransform:
   m_GameObject: {fileID: 1832231089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.23841321, y: 0.23841321, z: 0.23841321}
+  m_LocalScale: {x: 0.2191001, y: 0.29213348, z: 0.29213348}
   m_Children: []
   m_Father: {fileID: 506408831}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 746.00006, y: -461}
+  m_AnchoredPosition: {x: 498.9999, y: -449}
   m_SizeDelta: {x: 1873.7, y: 147.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832231091
@@ -1447,7 +1543,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PlanetCute PNG
+  m_Text: 'PlanetCute PNG art by Daniel Cook (Lostgarden.com) '
 --- !u!222 &1832231093
 CanvasRenderer:
   m_ObjectHideFlags: 0
