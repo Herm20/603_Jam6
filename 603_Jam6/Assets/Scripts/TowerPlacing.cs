@@ -16,6 +16,9 @@ public class TowerPlacing : MonoBehaviour {
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
     }
     void OnMouseDown(){
+        Vector3Int currentPosition = grid.WorldToCell(transform.position);
+        // Vector3Int targetPosition = grid.WorldToCell(TargetPos);
+        Debug.Log(currentPosition);
         if (Input.GetMouseButtonDown(0)){ 
             Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -33,7 +36,7 @@ public class TowerPlacing : MonoBehaviour {
                     towerPosition.x = transform.position.x;
                 }
                 
-                GameObject tower = (GameObject)Resources.Load("Prefabs/Towers/GreenTower");
+                GameObject tower = (GameObject)Resources.Load("Prefabs/Towers/FireTower");
                 Instantiate(tower, towerPosition, Quaternion.identity);
             }   
         }
