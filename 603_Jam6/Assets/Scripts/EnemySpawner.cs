@@ -16,9 +16,8 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         isGenerated = false; 
-        currentBeat = Beats._instance.counter;
+        currentBeat = 0;
         enemy = (GameObject)Resources.Load("Prefabs/Enemy/EnemyBug");
-        if (enemy == null) Debug.Log("enemy is null");
     }
 
     // Update is called once per frame
