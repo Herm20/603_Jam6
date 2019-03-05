@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             Time.timeScale = 1;
-            SceneManager.LoadScene(Application.loadedLevel);
+            SceneManager.LoadScene("Main");
         }
     }
 
@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
         {
             goldText.text = "game over";
             Time.timeScale = 0;
+            SceneManager.LoadScene("Credits");
         }       
     }
 
