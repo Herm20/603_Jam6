@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
         towers = new List<GameObject>();
-        gold = 0;
+        gold = 99;// test
         currentTower = TowerType.IceTower;
     }
 
@@ -58,17 +58,17 @@ public class GameManager : MonoBehaviour
         switch (currentTower)
         {
                 case TowerType.IceTower:
-                    GameObject tower1 = (GameObject)Resources.Load("Prefabs/Towers/IceTower");
+                    GameObject tower1 = (GameObject)Resources.Load("Prefabs/Towers/BlueTower");
                     var temp1 = Instantiate(tower1, pos, Quaternion.identity);
                     towers.Add(temp1);
                     break;
                 case TowerType.FireTower:
-                    GameObject tower2 = (GameObject)Resources.Load("Prefabs/Towers/FireTower");
+                    GameObject tower2 = (GameObject)Resources.Load("Prefabs/Towers/OrangeTower");
                     var temp2 = Instantiate(tower2, pos, Quaternion.identity);
                     towers.Add(temp2);
                     break;
                 case TowerType.RangedTower:
-                    GameObject tower3 = (GameObject)Resources.Load("Prefabs/Towers/RangedTower");
+                    GameObject tower3 = (GameObject)Resources.Load("Prefabs/Towers/GreenTower");
                     var temp3 = Instantiate(tower3, pos, Quaternion.identity);
                     towers.Add(temp3);
                     break;

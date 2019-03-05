@@ -9,8 +9,10 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="bullet.cs" t="Include" />
           <e p="CameraManager.cs" t="Include" />
           <e p="Enemy.cs" t="Include" />
+          <e p="EnemySpawner.cs" t="Include" />
           <e p="FolderHolder.cs" t="Include" />
           <e p="GameManager.cs" t="Include" />
           <e p="GridManager.cs" t="Include" />
@@ -22,6 +24,7 @@
             <e p="RhythmManager.cs" t="Include" />
           </e>
           <e p="Selector.cs" t="Include" />
+          <e p="TowerAttack.cs" t="Include" />
           <e p="TowerPlacing.cs" t="Include" />
           <e p="WayPoints.cs" t="Include" />
         </e>
