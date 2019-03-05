@@ -14,20 +14,37 @@ public class TowerAttack : MonoBehaviour {
 
     public float beatInterval = 3;
 
+    private int counter;
 
+    public bool active;
     void Start(){
         
         //Instantiate(bullet, transform.position, Quaternion.identity);
         CurrentBeat = 0;
-        
+        active = false;
+        counter = 0;
+        GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.4f);
     }
 
     void Update(){
-        if (CurrentBeat != Beats._instance.counter) isGenerated = false;
-        if(((Beats._instance.counter % beatInterval) == 0) & isGenerated == false){
-            Instantiate(bullet, transform.position, Quaternion.identity);
-            CurrentBeat = Beats._instance.counter;
-            isGenerated = true;
+        if (active)
+        {
+            if (CurrentBeat != Beats._instance.counter) isGenerated = false;
+            if(((Beats._instance.counter % beatInterval) == 0) & isGenerated == false){
+                Instantiate(bullet, transform.position, Quaternion.identity);
+                CurrentBeat = Beats._instance.counter;
+                isGenerated = true;
+            }
+        }
+    }
+
+    public void chargeTowerUp()
+    {
+        counter++;
+        GetComponent<SpriteRenderer>().color = new Color(1,1,1,0.4f + counter * 0.2f);
+        if (counter == 2)
+        {
+            active = true;
         }
     }
 

@@ -22,14 +22,48 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite[] Images;
     [SerializeField] private Image Image;
     private TowerType currentTower;
+    private int lastMatchedBeat;
+    private EnemySpawner generator;
     // Start is called before the first frame update
     void Awake()
     {
         _instance = this;
         grid = GameObject.FindGameObjectWithTag("Grid").GetComponent<Grid>();
         towers = new List<GameObject>();
-        gold = 99;// test
+        gold = 0;// test
+        goldText.text = " " + gold;
         currentTower = TowerType.IceTower;
+        generator = GetComponent<EnemySpawner>();
+        
+    }
+
+    private void Update()
+    {
+        if (Beats._instance.counter == 10 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(5);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if (Beats._instance.counter == 30 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(7);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if(Beats._instance.counter == 60 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(10);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if(Beats._instance.counter == 90 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(15);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if(Beats._instance.counter == 120 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(20);
+            lastMatchedBeat = Beats._instance.counter;
+        }else if(Beats._instance.counter == 150 && lastMatchedBeat != Beats._instance.counter)
+        {
+            generator.startNewWave(25);
+            lastMatchedBeat = Beats._instance.counter;
+        }
     }
 
     public bool isAvailable(Vector3 pos)
@@ -39,12 +73,43 @@ public class GameManager : MonoBehaviour
         {
             Vector3Int towerPosition = grid.WorldToCell(tower.transform.position);
             if (towerPosition.x == cellPosition.x && towerPosition.y == cellPosition.y) {
-                // if the tower is not completed
-                // add here
                 return false;
             }
         }
         return true;
+    }
+    
+    public void revert(Vector3 pos)
+    {
+        Vector3Int cellPosition = grid.WorldToCell(pos);
+        foreach (var tower in towers)
+        {
+            Vector3Int towerPosition = grid.WorldToCell(tower.transform.position);
+            if (towerPosition.x == cellPosition.x && towerPosition.y == cellPosition.y) {
+                towers.Remove(tower);
+                Destroy(tower);
+                addGold(10);
+                break;
+            }
+        }
+    }
+    
+    public void chargeTower(Vector3 pos)
+    {
+        Vector3Int cellPosition = grid.WorldToCell(pos);
+        foreach (var tower in towers)
+        {
+            Vector3Int towerPosition = grid.WorldToCell(tower.transform.position);
+            if (towerPosition.x == cellPosition.x && towerPosition.y == cellPosition.y) {
+                // if the tower is not completed
+                // add here
+                if (!tower.GetComponent<TowerAttack>().active)
+                {
+                    tower.GetComponent<TowerAttack>().chargeTowerUp();
+                }
+                break;
+            }
+        }
     }
     
     public void addTower(Vector3 pos)

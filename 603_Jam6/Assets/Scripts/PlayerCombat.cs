@@ -25,39 +25,70 @@ public class PlayerCombat : MonoBehaviour
         if (!freeze) {
             if (Input.GetButtonDown("Build"))
             {
-                anim.Play("Interacting", -1, 0);
+                
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for build
+                    anim.Play("Interacting", -1, 0);
                     if (GameManager._instance.isAvailable(selector.transform.position))
                     {
                         GameManager._instance.addTower(selector.transform.position);
                     }
+                    else
+                    {
+                        GameManager._instance.chargeTower(selector.transform.position);
+                    }
                     lastMatchedBeat = Beats._instance.counter;
                 }
+                else
+                {
+                    anim.Play("Nope", -1, 0);
+                }
             }
+            if (Input.GetButtonDown("Revert"))
+            {
+                // switch the tower
+               
+                if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
+                {
+                    anim.Play("Interacting", -1, 0);
+                    GameManager._instance.revert(selector.transform.position);
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
+                }
+            }
+
             
             if (Input.GetButtonDown("Fire2"))
             {
                 // switch the tower
-                anim.Play("Interacting", -1, 0);
+              
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for build
+                    anim.Play("Interacting", -1, 0);
                     GameManager._instance.switchTowerType(false);
                     lastMatchedBeat = Beats._instance.counter;
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
                 }
             }
             
             if (Input.GetButtonDown("Fire3"))
             {
                 // switch the tower
-                anim.Play("Interacting", -1, 0);
+                
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for build
+                    anim.Play("Interacting", -1, 0);
                     GameManager._instance.switchTowerType(true);
                     lastMatchedBeat = Beats._instance.counter;
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
                 }
             }
                
@@ -65,44 +96,60 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetButtonDown("Left"))
             {
                 // ok for move Horizontal
-                anim.Play("Interacting", -1, 0);
+               
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for attack
+                    anim.Play("Interacting", -1, 0);
                     lastMatchedBeat = Beats._instance.counter;
                     moveTo(-1, 0);
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
                 }
             }
 
             if (Input.GetButtonDown("Right"))
             {
-                anim.Play("Interacting", -1, 0);
+               
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for attack
+                    anim.Play("Interacting", -1, 0);
                     lastMatchedBeat = Beats._instance.counter;
                     moveTo(1, 0);
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
                 }
             }
 
             if (Input.GetButtonDown("Up"))
             {
-                anim.Play("Interacting", -1, 0);
+               
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for attack
+                    anim.Play("Interacting", -1, 0);
                     lastMatchedBeat = Beats._instance.counter;
                     moveTo(0, 1);
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
                 }
             }
             if (Input.GetButtonDown("Down"))
             {
-                anim.Play("Interacting", -1, 0);
+               
                 if (Beats._instance.inBeat && lastMatchedBeat != Beats._instance.counter)
                 {
                     // ok for attack
+                    anim.Play("Interacting", -1, 0);
                     lastMatchedBeat = Beats._instance.counter;
                     moveTo(0, -1);
+                }else
+                {
+                    anim.Play("Nope", -1, 0);
                 }
             }
             
