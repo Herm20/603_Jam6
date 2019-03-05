@@ -19,9 +19,7 @@ public class bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-        if(gameObject.name == "GreenAttack(Clone)"){
-            maxLength = 6;
-        }
+        
         startPosition = transform.position;
         startTime = Time.time;
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -35,12 +33,17 @@ public class bullet : MonoBehaviour
                 } 
 
             }
+
+            if(gameObject.name == "GreenAttack(Clone)"){
+                enem = enemies[enemies.Length - 1];
+                speed = 20;
+            }   
         
             distance = Vector2.Distance(transform.position, enem.transform.position);
 
             
 
-            if (distance > maxLength) Destroy(gameObject);
+            if (distance > maxLength & gameObject.name != "GreenAttack(Clone)") Destroy(gameObject);
             isEnemy = true;
         }
 
